@@ -15,8 +15,9 @@
                 <th>Penulis</th>
                 <th>Penerbit</th>
                 <th>Tahun</th>
+                <th>ISBN</th>
                 <th>Stok</th>
-                <th>Kategori</th>
+                <th>ID Kategori</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -28,8 +29,9 @@
                     <td>{{ $book['penulis'] }}</td>
                     <td>{{ $book['penerbit'] }}</td>
                     <td>{{ $book['tahun_terbit'] }}</td>
+                    <td>{{ $book['isbn'] ?? '-' }}</td>
                     <td>{{ $book['stok'] }}</td>
-                    <td>{{ $book['kategori'] }}</td>
+                    <td>{{ $book['category_id'] }}</td>
                     <td>
                         <a href="{{ route('books.show', $book['id']) }}">Detail</a>
                         |
@@ -44,11 +46,15 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="8">Belum ada data buku.</td>
+                    <td colspan="9">Belum ada data buku.</td>
                 </tr>
             @endforelse
         </tbody>
     </table>
 
-    <p><em>Catatan: data di atas masih data dummy (array statis di Controller), belum dari database. Migration &amp; Model Eloquent baru dibuat di Pertemuan 5.</em></p>
+    <div style="margin-top: 16px;">
+        {{ $books->links() }}
+    </div>
+
+    <p><em>Catatan: kolom kategori masih menampilkan ID. Menampilkan nama kategori memerlukan relasi Eloquent yang dipelajari di Pertemuan 7.</em></p>
 @endsection
