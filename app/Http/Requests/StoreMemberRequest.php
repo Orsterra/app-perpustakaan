@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreMemberRequest extends FormRequest
@@ -11,6 +12,9 @@ class StoreMemberRequest extends FormRequest
         return true;
     }
 
+    /**
+     * @return array<string, ValidationRule|array<mixed>|string>
+     */
     public function rules(): array
     {
         return [
@@ -26,7 +30,7 @@ class StoreMemberRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nama.required'          => 'Nama wajib diisi.',
+            'nama.required'          => 'Nama anggota wajib diisi.',
             'nim.required'           => 'NIM wajib diisi.',
             'nim.unique'             => 'NIM sudah terdaftar.',
             'email.required'         => 'Email wajib diisi.',
@@ -35,7 +39,7 @@ class StoreMemberRequest extends FormRequest
             'nomor_telepon.required' => 'Nomor telepon wajib diisi.',
             'alamat.required'        => 'Alamat wajib diisi.',
             'status.required'        => 'Status wajib dipilih.',
-            'status.in'              => 'Status harus berupa aktif atau nonaktif.',
+            'status.in'              => 'Status tidak valid.',
         ];
     }
 }

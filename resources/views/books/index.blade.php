@@ -17,7 +17,7 @@
                 <th>Tahun</th>
                 <th>ISBN</th>
                 <th>Stok</th>
-                <th>ID Kategori</th>
+                <th>Kategori</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -31,7 +31,7 @@
                     <td>{{ $book['tahun_terbit'] }}</td>
                     <td>{{ $book['isbn'] ?? '-' }}</td>
                     <td>{{ $book['stok'] }}</td>
-                    <td>{{ $book['category_id'] }}</td>
+                    <td>{{ $book['category']['nama_kategori'] }}</td>
                     <td>
                         <a href="{{ route('books.show', $book['id']) }}">Detail</a>
                         |
