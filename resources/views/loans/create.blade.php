@@ -26,19 +26,8 @@
         </div>
 
         <div style="margin-bottom: 12px;">
-            <label for="user_id" style="display: block; font-weight: bold; margin-bottom: 4px;">Petugas</label>
-            <select name="user_id" id="user_id" style="width: 100%; padding: 6px;">
-                <option value="">-- Pilih Petugas --</option>
-                @foreach ($users as $user)
-                    <option value="{{ $user['id'] }}" @selected(old('user_id') == $user['id'])>
-                        {{ $user['name'] }}
-                    </option>
-                @endforeach
-            </select>
-            @error('user_id')
-                <div style="color: #b91c1c; font-size: 14px; margin-top: 4px;">{{ $message }}</div>
-            @enderror
-            <p><em>Catatan: dropdown petugas dipilih manual karena autentikasi baru dipelajari di Pertemuan 8.</em></p>
+            <label style="display: block; font-weight: bold; margin-bottom: 4px;">Petugas</label>
+            <p><em>Petugas pencatat: {{ auth()->user()->name }} (otomatis dari akun yang login).</em></p>
         </div>
 
         <div style="margin-bottom: 12px;">
